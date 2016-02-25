@@ -14,6 +14,8 @@
 	          </ul>
 	        </li>
             <li role="presentation"><a href="kontakt">Kontakt</a></li>
+            <li role="presentation"><a href="users/new">Rejestracja</a></li>
+            <li role="presentation"><a href="welcome">Logowanie</a></li>
           </ul>
         </nav> 
       </div>

@@ -21,6 +21,7 @@ welcome.springmvc : <spring:message code="welcome.springmvc" text="default text"
 </h2>
 <br>
 <h4>śźćół asdf asdf </h4>
+  
 <hr>
 <p>  The time on the server is ${serverTime}. </p>
 <p><spring:message code="user.title" /></p>

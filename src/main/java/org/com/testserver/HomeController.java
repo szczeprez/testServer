@@ -26,7 +26,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
@@ -68,7 +68,7 @@ public class HomeController {
 		return "pages/portfolio";
 	}
 	
-	@RequestMapping(value = "/pozycjonowanie-seo", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/pozycjonowanie-seo", method = RequestMethod.GET)
 	public String pozycjonowanieStrongWww(Locale locale) {
 		logger.info("Method pozycjonowanie_seo() {}", locale);
 		return "pages/pozycjonowanie_seo";
@@ -78,7 +78,7 @@ public class HomeController {
 	public String projektowanieStronWww(Locale locale) {
 		logger.info("Method projektowanie-stron-www() {}", locale);
 		return "pages/projektowanie-stron-www";
-	}
+	}*/
 
 	@RequestMapping(value = "/sklepy-internetowe", method = RequestMethod.GET)
 	public String sklepyInternetowe(Locale locale) {

@@ -3,6 +3,7 @@
        <div class="text-muted">
         <nav>
           <ul class="nav nav-pills pull-right">
+          <li> <a href="<c:url value="/loged/moj_profil" />" >moj_profil</a></li>
             <li role="presentation" class="active"><a href="<c:url value="/loged/pozycjonowanie-seo" />">Pozycjonowanie SEO</a></li>
             <li role="presentation"><a href="<c:url value="/loged/projektowanie-stron-www"/> ">Projektowanie Stron WWW</a></li>
             <li class="dropdown"> 
@@ -36,10 +37,33 @@
 				</script>
 		
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
-					<h5>
-						User : ${pageContext.request.userPrincipal.name} | <a
-							href="javascript:formSubmit()"> Logout</a>
-					</h5>
+				
+					
+					
+            <li class="dropdown"> 
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            	 
+						User : ${pageContext.request.userPrincipal.name}
+				 
+              
+              <span class="caret"></span>
+              </a>
+	          <ul class="dropdown-menu">
+	            <li><a href="<c:url value="/loged/moj_profil" /> ">Mój profil</a></li>
+	            <li><a href="<c:url value="#" /> ">Edycja profilu</a></li>
+	            <li><a href="<c:url value="#" /> ">Dodaj zdjęcie</a></li>
+	            <li><a href="<c:url value="#" /> ">Goście profilu</a></li>
+	            <li><a href="<c:url value="#" /> ">Chcą Cię poznać</a></li>
+	            <li><a href="<c:url value="#" /> ">Członkostwo - kup</a></li>
+	            <li><a href="<c:url value="#" /> ">Goście profilu</a></li>
+	            
+	            <li role="separator" class="divider"></li>
+	            <li><a href="javascript:formSubmit()"> Wyloguj</a></li>
+	          </ul>
+	        </li>
+					
+					
+					
 				</c:if>
 			</sec:authorize>
           </ul>

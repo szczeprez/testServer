@@ -8,9 +8,11 @@
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
 		<config>src/main/resources/spring/beans-data.xml</config>
+		<config>src/main/resources/spring/beans-service.xml</config>
+		<config>src/main/resources/spring/beans-web.xml</config>
+		<config>src/main/resources/spring/beans-security-special.xml</config>
 	</configs>
 	<autoconfigs>
-		<config>src/main/resources/spring/beans-web.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

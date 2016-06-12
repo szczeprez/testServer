@@ -110,18 +110,6 @@ public class HomeController {
 		logger.info("Method portfolio() {}", locale);
 		return "pages/portfolio";
 	}
-	
-	/*@RequestMapping(value = "/pozycjonowanie-seo", method = RequestMethod.GET)
-	public String pozycjonowanieStrongWww(Locale locale) {
-		logger.info("Method pozycjonowanie_seo() {}", locale);
-		return "pages/pozycjonowanie_seo";
-	}
-
-	@RequestMapping(value = "/projektowanie-stron-www", method = RequestMethod.GET)
-	public String projektowanieStronWww(Locale locale) {
-		logger.info("Method projektowanie-stron-www() {}", locale);
-		return "pages/projektowanie-stron-www";
-	}*/
 
 	@RequestMapping(value = "/sklepy-internetowe", method = RequestMethod.GET)
 	public String sklepyInternetowe(Locale locale) {

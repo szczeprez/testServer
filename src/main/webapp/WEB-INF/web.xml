@@ -10,8 +10,8 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value> 
 			classpath:/spring/beans-data.xml  
+			classpath:/spring/beans-service.xml
 			classpath:/spring/beans-security.xml
- <!--			classpath:/spring/beans-security-special.xml -->
 		</param-value>
 	</context-param>
 

@@ -1,0 +1,5 @@
+<decorators>
+	<decorator name="skin" page="/WEB-INF/jsp/skin/pageTemplate.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/admin**" access="hasRole('ROLE_USER')" /> 
+		<security:intercept-url pattern="/loged/projektowanie-stron-www**" access="hasRole('ROLE_USER')" /> 
+		<security:intercept-url pattern="/loged/pozycjonowanie-seo**" access="hasRole('ROLE_USER')" /> 
+		<security:intercept-url pattern="/moj_profil**" access="hasRole('ROLE_USER')" />
+		<security:form-login 
+	 			login-page="/login"
+				authentication-failure-url="/login?error"
+				login-processing-url="/j_spring_security_check"
+				default-target-url="/" />
+		<security:logout 
+			logout-success-url="/logout?logout"
+		    logout-url="/j_spring_security_logout"/>
+		<security:csrf/>
+		<security:access-denied-handler error-page="/403"/>
+	</security:http>
+ 
+	<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"> 
+		<beans:constructor-arg value="256" /> 
+	</beans:bean>
+	
+	<!-- Better to generate a large, random salt (stored as plaintext with the 
+		user account) to make dictionary attacks harder, but this works for modest 
+		security needs. At least we are using a variable salt, which still prevents 
+		attackers from using a single rainbow table to attack the passwords. -->
+	<beans:bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource" 
+		p:userPropertyToUse="id" />
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider user-service-ref="userDetailsService">
+			<security:password-encoder ref="passwordEncoder">
+				<security:salt-source ref="saltSource" />
+			</security:password-encoder>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+<!-- 	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="u" password="u" authorities="ROLE_USER" />
+				<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager> 
+-->
+	
+<!-- 	<security:authentication-manager>
+		<security:authentication-provider>
+	           <security:jdbc-user-service data-source-ref="dataSource"
+		  users-by-username-query= "select username,password, enabled from users where username=?"
+		  authorities-by-username-query= "select username, role from user_roles where username =?  " />
+         </security:authentication-provider>
+	</security:authentication-manager> -->
+
+ </beans:beans>

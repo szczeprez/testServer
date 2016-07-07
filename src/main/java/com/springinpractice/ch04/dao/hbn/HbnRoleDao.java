@@ -11,7 +11,6 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.springinpractice.ch04.dao.RoleDao;
-import com.springinpractice.ch04.domain.Province;
 import com.springinpractice.ch04.domain.Role;
 import com.springinpractice.ch04.dao.hibernate.AbstractHbnDao;
 
@@ -26,10 +25,5 @@ public class HbnRoleDao extends AbstractHbnDao<Role> implements RoleDao {
 		q.setParameter("name", name);
 		return (Role) q.uniqueResult();
 	}
-
-	@Override
-	public Province findByName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+ 
 }

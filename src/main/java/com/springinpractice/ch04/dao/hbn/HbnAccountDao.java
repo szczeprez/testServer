@@ -19,7 +19,6 @@ import org.springframework.stereotype.Repository;
 
 import com.springinpractice.ch04.dao.AccountDao;
 import com.springinpractice.ch04.domain.Account;
-import com.springinpractice.ch04.domain.Province;
 import com.springinpractice.ch04.domain.UserDetailsAdapter;
 import com.springinpractice.ch04.dao.hibernate.AbstractHbnDao;
 
@@ -54,10 +53,5 @@ public class HbnAccountDao extends AbstractHbnDao<Account> implements AccountDao
 				.setParameter("username", username)
 				.uniqueResult();
 	}
-
-	@Override
-	public Province findByName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+ 
 }

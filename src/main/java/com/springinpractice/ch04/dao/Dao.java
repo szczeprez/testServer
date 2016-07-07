@@ -11,8 +11,6 @@ package com.springinpractice.ch04.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import com.springinpractice.ch04.domain.Province;
-
 /**
  * @author Willie Wheeler (willie.wheeler@gmail.com)
  */
@@ -65,5 +63,4 @@ public interface Dao<T extends Object> {
 	
 	boolean exists(Serializable id);
 
-	Province findByName();
 }

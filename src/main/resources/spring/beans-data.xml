@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 
-	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/Sip04DS" 
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/Sip04DS"
 		resource-ref="true" /> <!-- 04 czy 06 ? -->
 
 	<!-- Placeholder config -->
@@ -31,37 +31,47 @@
 	</bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
-	<bean id="hibernate4AnnotatedSessionFactory"
+	<!-- <bean id="hibernate4AnnotatedSessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSource" /> <property name="packagesToScan" 
+		value="com.springinpractice.ch04.domain" /> <property name="hibernateProperties"> 
+		<props> <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect 
+		</prop> <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+		<prop key="hibernate.hbm2ddl.auto">update</prop> <prop key="hibernate.show_sql">false</prop> 
+		</props> </property> </bean> -->
+
+	<bean id="hibernate44"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.springinpractice.ch04.domain" />
+		<property name="configLocation">
+			<value>/WEB-INF/hibernate.cfg.xml</value>
+		</property>
 		<property name="hibernateProperties">
 			<props>
-				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect </prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
-	 
 	</bean>
 
+
 	<!-- <bean id="personDAO" class="org.secund.szczeprez.dao.PersonDAOImpl"> 
-		        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" /> 
-		 </bean> 
-		<bean id="personService" class="org.secund.szczeprez.service.PersonServiceImpl"> 
-		<property name="personDAO" ref="personDAO"></property> 
-		</bean> -->
-		
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" /> 
+		</bean> <bean id="personService" class="org.secund.szczeprez.service.PersonServiceImpl"> 
+		<property name="personDAO" ref="personDAO"></property> </bean> -->
+
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+		<property name="sessionFactory" ref="hibernate44" />
+		<!-- <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" 
+			/> -->
 	</bean>
-	
-<!-- 	<tx:annotation-driven />
-	 -->
+
+	<!-- <tx:annotation-driven /> -->
+
 	<context:component-scan base-package="com.springinpractice.ch04.dao.*" />
 	<context:component-scan base-package="com.springinpractice.ch04.service.*" />
 

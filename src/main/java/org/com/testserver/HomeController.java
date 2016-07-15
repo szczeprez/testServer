@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +21,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springinpractice.ch04.model.DanePodstawowe;
+import com.springinpractice.ch04.model.DodatkowaInformacja;
+import com.springinpractice.ch04.model.Miejscowosc;
+import com.springinpractice.ch04.model.Mieszkam;
+import com.springinpractice.ch04.model.Plec;
+import com.springinpractice.ch04.model.Preferencje;
+import com.springinpractice.ch04.model.StatusZwiazku;
+import com.springinpractice.ch04.model.Sylwetka;
+import com.springinpractice.ch04.model.Wojewodztwo;
+import com.springinpractice.ch04.service.DanePodstawoweService;
+import com.springinpractice.ch04.service.PlecService;
+
 
 /**
  * Handles requests for the application home page.
@@ -29,6 +42,9 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+	@Autowired private DanePodstawoweService danePodstawoweSerwis; 
+	
+	@Autowired private PlecService plecService;
 	/**
 	 * http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
 	 * 
@@ -60,7 +76,14 @@ public class HomeController {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String name = auth.getName(); //get logged in username
 		logger.info("Logged person = " + name);
- 
+		// DanePodstawowe t = new DanePodstawowe("Stefan",);
+		// danePodstawoweSerwis.create(t);
+		 
+		Plec p = new Plec();
+		p.setPlec("Men");
+		plecService.create(p);
+		
+		logger.info("created new Plec :)" );
 	    model.addAttribute("username", name	); 
 		return "home"; 
 	}

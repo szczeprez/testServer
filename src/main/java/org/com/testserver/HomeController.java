@@ -32,6 +32,7 @@ import com.springinpractice.ch04.model.StatusZwiazku;
 import com.springinpractice.ch04.model.Sylwetka;
 import com.springinpractice.ch04.model.Wojewodztwo;
 import com.springinpractice.ch04.service.DanePodstawoweService;
+import com.springinpractice.ch04.service.MieszkamService;
 import com.springinpractice.ch04.service.PlecService;
 
 
@@ -44,7 +45,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired private DanePodstawoweService danePodstawoweSerwis; 
-	
+	@Autowired private MieszkamService mieszkamService; 
 	@Autowired private PlecService plecService;
 	/**
 	 * http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
@@ -80,10 +81,11 @@ public class HomeController {
 		// DanePodstawowe t = new DanePodstawowe("Stefan",);
 		// danePodstawoweSerwis.create(t);
 		 
-		String name_a = "Tomek"; 
-		DanePodstawowe dp =  danePodstawoweSerwis.findByName(name_a);
+		/*String name_a = "Tomek"; 
+		DanePodstawowe dp =  danePodstawoweSerwis.findByName(name_a);*/
 		
-		logger.info("Kazimierz =" , dp.toString());
+		Mieszkam mieszkam = mieszkamService.get(1L);
+		logger.info("Kazimierz =" , mieszkam);
 		
 		logger.info("created new Plec :)" );
 	    model.addAttribute("username", name	); 

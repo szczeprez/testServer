@@ -9,14 +9,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 @Entity
-@NamedQuery(name = "findDanePodstawoweByName", query = "from DanePodstawowe where name= :name")
+@NamedQuery(name = "findDanePodstawoweByName", query = "from DanePodstawowe where imie= :name")
 public class DanePodstawowe {
 
 	@Id
 	@GeneratedValue
 	private long id;
 
-	@Column(name = "Imie")
+	@Column(name = "imie")
 	private String imie;
 	@OneToOne
 	private Wojewodztwo wojewodztwo;
@@ -36,7 +36,8 @@ public class DanePodstawowe {
 	private Preferencje preferencje; 
 	
 	
-	
+	public DanePodstawowe() {
+	}
 
 	public DanePodstawowe(String imie, Wojewodztwo wojewodztwo, Miejscowosc miejscowosc, StatusZwiazku statusZwiazku,
 			Sylwetka sylwetka, Mieszkam mieszkam, DodatkowaInformacja dodatkowaInformacja, Preferencje preferencje) {

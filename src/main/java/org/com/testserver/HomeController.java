@@ -1,5 +1,6 @@
 package org.com.testserver;
  
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,9 +80,10 @@ public class HomeController {
 		// DanePodstawowe t = new DanePodstawowe("Stefan",);
 		// danePodstawoweSerwis.create(t);
 		 
-		Plec p = new Plec();
-		p.setPlec("Men");
-		plecService.create(p);
+		String name_a = "Tomek"; 
+		DanePodstawowe dp =  danePodstawoweSerwis.findByName(name_a);
+		
+		logger.info("Kazimierz =" , dp.toString());
 		
 		logger.info("created new Plec :)" );
 	    model.addAttribute("username", name	); 

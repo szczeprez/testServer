@@ -20,9 +20,6 @@ public class Preferencje {
 	private InteresujeMnie interesujeMnie; 
 	
 	@OneToOne
-	DanePodstawowe danePodstawowe;
-	
-	@OneToOne
 	private Plec plec;
 
 	public long getId() {
@@ -65,14 +62,6 @@ public class Preferencje {
 		this.plec = plec;
 	}
 
-	public DanePodstawowe getDanePodstawowe() {
-		return danePodstawowe;
-	}
-
-	public void setDanePodstawowe(DanePodstawowe danePodstawowe) {
-		this.danePodstawowe = danePodstawowe;
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -84,13 +73,10 @@ public class Preferencje {
 		builder.append(wiekDo);
 		builder.append(", interesujeMnie=");
 		builder.append(interesujeMnie);
-		builder.append(", danePodstawowe=");
-		builder.append(danePodstawowe);
 		builder.append(", plec=");
 		builder.append(plec);
 		builder.append("]");
 		return builder.toString();
-	} 
-	
-	
+	}
+
 }

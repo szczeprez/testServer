@@ -1,12 +1,14 @@
 package com.springinpractice.ch04.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Preferencje {
+public class Preferencje implements Serializable{
 
 	@Id
 	@GeneratedValue
@@ -77,6 +79,46 @@ public class Preferencje {
 		builder.append(plec);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((interesujeMnie == null) ? 0 : interesujeMnie.hashCode());
+		result = prime * result + ((plec == null) ? 0 : plec.hashCode());
+		result = prime * result + wiekDo;
+		result = prime * result + wiekOd;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Preferencje other = (Preferencje) obj;
+		if (id != other.id)
+			return false;
+		if (interesujeMnie == null) {
+			if (other.interesujeMnie != null)
+				return false;
+		} else if (!interesujeMnie.equals(other.interesujeMnie))
+			return false;
+		if (plec == null) {
+			if (other.plec != null)
+				return false;
+		} else if (!plec.equals(other.plec))
+			return false;
+		if (wiekDo != other.wiekDo)
+			return false;
+		if (wiekOd != other.wiekOd)
+			return false;
+		return true;
 	}
 
 }

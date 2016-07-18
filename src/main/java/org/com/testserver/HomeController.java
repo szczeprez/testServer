@@ -44,9 +44,7 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Autowired private DanePodstawoweService danePodstawoweSerwis; 
 	@Autowired private MieszkamService mieszkamService; 
-	@Autowired private PlecService plecService;
 	/**
 	 * http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
 	 * 
@@ -78,16 +76,12 @@ public class HomeController {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String name = auth.getName(); //get logged in username
 		logger.info("Logged person = " + name);
-		// DanePodstawowe t = new DanePodstawowe("Stefan",);
-		// danePodstawoweSerwis.create(t);
-		 
-		/*String name_a = "Tomek"; 
-		DanePodstawowe dp =  danePodstawoweSerwis.findByName(name_a);*/
+ 
 		
 		Mieszkam mieszkam = mieszkamService.get(1L);
 		logger.info("Kazimierz =" , mieszkam);
-		
-		logger.info("created new Plec :)" );
+			
+ 
 	    model.addAttribute("username", name	); 
 		return "home"; 
 	}

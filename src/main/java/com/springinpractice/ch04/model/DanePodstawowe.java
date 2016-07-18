@@ -1,5 +1,7 @@
 package com.springinpractice.ch04.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 @NamedQuery(name = "findDanePodstawoweByName", query = "from DanePodstawowe where imie= :name")
-public class DanePodstawowe {
+public class DanePodstawowe implements Serializable{
 
 	@Id
 	@GeneratedValue
@@ -138,6 +140,76 @@ public class DanePodstawowe {
 		builder.append(dodatkowaInformacja);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dodatkowaInformacja == null) ? 0 : dodatkowaInformacja.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((imie == null) ? 0 : imie.hashCode());
+		result = prime * result + ((miejscowosc == null) ? 0 : miejscowosc.hashCode());
+		result = prime * result + ((mieszkam == null) ? 0 : mieszkam.hashCode());
+		result = prime * result + ((preferencje == null) ? 0 : preferencje.hashCode());
+		result = prime * result + ((statusZwiazku == null) ? 0 : statusZwiazku.hashCode());
+		result = prime * result + ((sylwetka == null) ? 0 : sylwetka.hashCode());
+		result = prime * result + ((wojewodztwo == null) ? 0 : wojewodztwo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DanePodstawowe other = (DanePodstawowe) obj;
+		if (dodatkowaInformacja == null) {
+			if (other.dodatkowaInformacja != null)
+				return false;
+		} else if (!dodatkowaInformacja.equals(other.dodatkowaInformacja))
+			return false;
+		if (id != other.id)
+			return false;
+		if (imie == null) {
+			if (other.imie != null)
+				return false;
+		} else if (!imie.equals(other.imie))
+			return false;
+		if (miejscowosc == null) {
+			if (other.miejscowosc != null)
+				return false;
+		} else if (!miejscowosc.equals(other.miejscowosc))
+			return false;
+		if (mieszkam == null) {
+			if (other.mieszkam != null)
+				return false;
+		} else if (!mieszkam.equals(other.mieszkam))
+			return false;
+		if (preferencje == null) {
+			if (other.preferencje != null)
+				return false;
+		} else if (!preferencje.equals(other.preferencje))
+			return false;
+		if (statusZwiazku == null) {
+			if (other.statusZwiazku != null)
+				return false;
+		} else if (!statusZwiazku.equals(other.statusZwiazku))
+			return false;
+		if (sylwetka == null) {
+			if (other.sylwetka != null)
+				return false;
+		} else if (!sylwetka.equals(other.sylwetka))
+			return false;
+		if (wojewodztwo == null) {
+			if (other.wojewodztwo != null)
+				return false;
+		} else if (!wojewodztwo.equals(other.wojewodztwo))
+			return false;
+		return true;
 	}
 
 }

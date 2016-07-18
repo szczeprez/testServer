@@ -1,5 +1,7 @@
 package com.springinpractice.ch04.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Miejscowosc {
+public class Miejscowosc implements Serializable{
 
 	@Id
 	@GeneratedValue
@@ -57,5 +59,47 @@ public class Miejscowosc {
 		builder.append(wojewodztwo);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((danePodstawowe == null) ? 0 : danePodstawowe.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((nazwa_miejscowosci == null) ? 0 : nazwa_miejscowosci.hashCode());
+		result = prime * result + ((wojewodztwo == null) ? 0 : wojewodztwo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Miejscowosc other = (Miejscowosc) obj;
+		if (danePodstawowe == null) {
+			if (other.danePodstawowe != null)
+				return false;
+		} else if (!danePodstawowe.equals(other.danePodstawowe))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nazwa_miejscowosci == null) {
+			if (other.nazwa_miejscowosci != null)
+				return false;
+		} else if (!nazwa_miejscowosci.equals(other.nazwa_miejscowosci))
+			return false;
+		if (wojewodztwo == null) {
+			if (other.wojewodztwo != null)
+				return false;
+		} else if (!wojewodztwo.equals(other.wojewodztwo))
+			return false;
+		return true;
 	} 
+	
+	
 }

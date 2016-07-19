@@ -81,8 +81,10 @@ public class HomeController {
 		logger.info("Logged person = " + name);
  
 		//DanePodstawowe daneP = danePodstawoweService.findByName("Kazimierz"); 		
-//		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
-//		System.out.println(all);
+/*		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
+		System.out.println(all);*/
+		
+		
 		List<Preferencje> all = preferencjeService.getAll(); 
 		System.out.println(all);
 		for(Preferencje p: all){

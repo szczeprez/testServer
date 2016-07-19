@@ -38,11 +38,11 @@ public class HbnDanePodstawoweDao extends AbstractHbnDao<DanePodstawowe> impleme
 
 	@Override
 	public List<DanePodstawowe> getAll() {
-		getSession().beginTransaction(); 
-		Criteria createCriteria = getSession().createCriteria(DanePodstawowe.class); 
-		createCriteria.setFirstResult(1); 
-		List list = createCriteria.list(); 
-		return list;
+		getSession().beginTransaction();
+		List listDP = getSession().createQuery("from DanePodstawowe").list();
+		if (listDP == null)
+			System.err.println("getAll DanePodstawowe is NULL !");
+		return listDP;
 	}
 
 }

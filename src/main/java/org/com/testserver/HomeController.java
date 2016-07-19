@@ -84,6 +84,7 @@ public class HomeController {
 //		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
 //		System.out.println(all);
 		List<Preferencje> all = preferencjeService.getAll(); 
+		System.out.println(all);
 		for(Preferencje p: all){
 			System.out.println(p.getId());
 		}

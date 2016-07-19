@@ -1,5 +1,7 @@
 package com.springinpractice.ch04.service.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.springinpractice.ch04.dao.DanePodstawoweDao;
 import com.springinpractice.ch04.model.DanePodstawowe;
 import com.springinpractice.ch04.service.DanePodstawoweService;
+ 
 
 @Service
 @Transactional
@@ -33,6 +36,18 @@ public class DanePodstawoweServiceImpl implements DanePodstawoweService {
 		LOGGER.info("DanePodstawoweServiceImpl create {}", t);
 		danePodstawoweDao.create(t);
 		
+	}
+
+	@Override
+	public List<DanePodstawowe> getAll() {
+		
+		LOGGER.info("DanePodstawoweServiceImpl getAll() {}");
+		List<DanePodstawowe> all = danePodstawoweDao.getAll(); 
+		if(all == null){  
+			System.err.println("getAll is null!! in DanePodstawoweServiceImpl !");
+			} 
+		
+		return all;
 	}
 	
 	

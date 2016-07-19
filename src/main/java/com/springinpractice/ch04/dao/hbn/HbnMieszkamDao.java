@@ -18,7 +18,7 @@ public class HbnMieszkamDao extends AbstractHbnDao<Mieszkam> implements Mieszkam
         getSession().beginTransaction(); 
 		Query q = getSession().getNamedQuery("findMieszkamById"); 
 		q.setParameter("id", id); 
-		System.out.println(q.uniqueResult() + " ddddddddddddd");
+		System.out.println(q.uniqueResult() + " HbnMieszkamDao {}");
 		return (Mieszkam) q.uniqueResult();
 	}
 	

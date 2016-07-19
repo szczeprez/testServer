@@ -10,14 +10,19 @@ import javax.persistence.OneToOne;
 @Entity
 public class DodatkowaInformacja implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 11L;
+
 	@Id
 	@GeneratedValue
 	private long id;
 	
 	private String dodatkowaInfo;
 	
-	@OneToOne(mappedBy = "dodatkowaInformacja")
-	DanePodstawowe danePodstawowe; 
+	//@OneToOne(mappedBy = "dodatkowaInformacja")
+	//DanePodstawowe danePodstawowe; 
 
 	public long getId() {
 		return id;
@@ -36,13 +41,13 @@ public class DodatkowaInformacja implements Serializable{
 	}
 
 	
-	public DanePodstawowe getDanePodstawowe() {
+/*	public DanePodstawowe getDanePodstawowe() {
 		return danePodstawowe;
 	}
 
 	public void setDanePodstawowe(DanePodstawowe danePodstawowe) {
 		this.danePodstawowe = danePodstawowe;
-	}
+	}*/
 
 	@Override
 	public String toString() {
@@ -59,7 +64,6 @@ public class DodatkowaInformacja implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((danePodstawowe == null) ? 0 : danePodstawowe.hashCode());
 		result = prime * result + ((dodatkowaInfo == null) ? 0 : dodatkowaInfo.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
@@ -74,11 +78,6 @@ public class DodatkowaInformacja implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		DodatkowaInformacja other = (DodatkowaInformacja) obj;
-		if (danePodstawowe == null) {
-			if (other.danePodstawowe != null)
-				return false;
-		} else if (!danePodstawowe.equals(other.danePodstawowe))
-			return false;
 		if (dodatkowaInfo == null) {
 			if (other.dodatkowaInfo != null)
 				return false;
@@ -88,5 +87,7 @@ public class DodatkowaInformacja implements Serializable{
 			return false;
 		return true;
 	}
+
+
 
 }

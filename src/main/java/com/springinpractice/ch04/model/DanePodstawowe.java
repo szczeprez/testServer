@@ -14,6 +14,11 @@ import javax.persistence.OneToOne;
 @NamedQuery(name = "findDanePodstawoweByName", query = "from DanePodstawowe where imie= :name")
 public class DanePodstawowe implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private long id;

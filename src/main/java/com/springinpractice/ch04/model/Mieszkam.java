@@ -17,8 +17,8 @@ public class Mieszkam implements Serializable{
 	private long id;
 	String statusMieszkaniowy; 
 
-	@OneToOne(mappedBy = "mieszkam")
-	DanePodstawowe danePodstawowe;
+	//@OneToOne(mappedBy = "mieszkam")
+	//DanePodstawowe danePodstawowe;
 
 	public long getId() {
 		return id;
@@ -28,13 +28,13 @@ public class Mieszkam implements Serializable{
 		this.id = id;
 	}
 
-	public DanePodstawowe getDanePodstawowe() {
+/*	public DanePodstawowe getDanePodstawowe() {
 		return danePodstawowe;
 	}
 
 	public void setDanePodstawowe(DanePodstawowe danePodstawowe) {
 		this.danePodstawowe = danePodstawowe;
-	}
+	}*/
 
 	public String getStatusMieszkaniowy() {
 		return statusMieszkaniowy;
@@ -52,7 +52,7 @@ public class Mieszkam implements Serializable{
 		builder.append(", statusMieszkaniowy=");
 		builder.append(statusMieszkaniowy);
 		builder.append(", danePodstawowe=");
-		builder.append(danePodstawowe);
+//		builder.append(danePodstawowe);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -61,7 +61,6 @@ public class Mieszkam implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((danePodstawowe == null) ? 0 : danePodstawowe.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((statusMieszkaniowy == null) ? 0 : statusMieszkaniowy.hashCode());
 		return result;
@@ -76,11 +75,6 @@ public class Mieszkam implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Mieszkam other = (Mieszkam) obj;
-		if (danePodstawowe == null) {
-			if (other.danePodstawowe != null)
-				return false;
-		} else if (!danePodstawowe.equals(other.danePodstawowe))
-			return false;
 		if (id != other.id)
 			return false;
 		if (statusMieszkaniowy == null) {
@@ -90,5 +84,7 @@ public class Mieszkam implements Serializable{
 			return false;
 		return true;
 	}
+
+ 
  
 }

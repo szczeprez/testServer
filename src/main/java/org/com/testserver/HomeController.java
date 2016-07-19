@@ -34,6 +34,7 @@ import com.springinpractice.ch04.model.Wojewodztwo;
 import com.springinpractice.ch04.service.DanePodstawoweService;
 import com.springinpractice.ch04.service.MieszkamService;
 import com.springinpractice.ch04.service.PlecService;
+import com.springinpractice.ch04.service.PreferencjeService;
 
 
 /**
@@ -43,8 +44,10 @@ import com.springinpractice.ch04.service.PlecService;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
+    @Autowired private DanePodstawoweService danePodstawoweService;  
 	@Autowired private MieszkamService mieszkamService; 
+	@Autowired private PreferencjeService preferencjeService; 
+	
 	/**
 	 * http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
 	 * 
@@ -77,12 +80,18 @@ public class HomeController {
 	    String name = auth.getName(); //get logged in username
 		logger.info("Logged person = " + name);
  
+		//DanePodstawowe daneP = danePodstawoweService.findByName("Kazimierz"); 		
+//		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
+//		System.out.println(all);
+		List<Preferencje> all = preferencjeService.getAll(); 
+		for(Preferencje p: all){
+			System.out.println(p.getId());
+		}
 		
-		Mieszkam mieszkam = mieszkamService.get(1L);
-		logger.info("Kazimierz =" , mieszkam);
-			
+		//Mieszkam mieszkam = mieszkamService.get(1L);
+logger.info("after retrived !");
  
-	    model.addAttribute("username", name	); 
+	     
 		return "home"; 
 	}
 	

@@ -2,23 +2,31 @@ package com.springinpractice.ch04.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 @Entity
-@NamedQuery(name = "findMieszkamById", query = "from Mieszkam where id = :id" )  
-public class Mieszkam implements Serializable{
+@NamedQuery(name = "findMieszkamById", query = "from Mieszkam where id = :id")
+public class Mieszkam implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+	@GenericGenerator(name = "myGenerator", strategy = "foreign", parameters = @Parameter(value = "danePodstawowe", name = "property"))
 	private long id;
-	String statusMieszkaniowy; 
+	String statusMieszkaniowy;
 
-	//@OneToOne(mappedBy = "mieszkam")
-	//DanePodstawowe danePodstawowe;
+	@OneToOne(mappedBy = "mieszkam", cascade = CascadeType.ALL)
+	DanePodstawowe danePodstawowe;
 
 	public long getId() {
 		return id;
@@ -28,13 +36,13 @@ public class Mieszkam implements Serializable{
 		this.id = id;
 	}
 
-/*	public DanePodstawowe getDanePodstawowe() {
+	public DanePodstawowe getDanePodstawowe() {
 		return danePodstawowe;
 	}
 
 	public void setDanePodstawowe(DanePodstawowe danePodstawowe) {
 		this.danePodstawowe = danePodstawowe;
-	}*/
+	}
 
 	public String getStatusMieszkaniowy() {
 		return statusMieszkaniowy;
@@ -52,7 +60,7 @@ public class Mieszkam implements Serializable{
 		builder.append(", statusMieszkaniowy=");
 		builder.append(statusMieszkaniowy);
 		builder.append(", danePodstawowe=");
-//		builder.append(danePodstawowe);
+		// builder.append(danePodstawowe);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -85,6 +93,4 @@ public class Mieszkam implements Serializable{
 		return true;
 	}
 
- 
- 
 }

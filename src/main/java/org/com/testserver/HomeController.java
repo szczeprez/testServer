@@ -80,16 +80,19 @@ public class HomeController {
 	    String name = auth.getName(); //get logged in username
 		logger.info("Logged person = " + name);
  
-		//DanePodstawowe daneP = danePodstawoweService.findByName("Kazimierz"); 		
-/*		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
-		System.out.println(all);*/
+		// DanePodstawowe daneP = danePodstawoweService.findByName("Kazimierz"); 		
+		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
+		//System.out.println(all.get(0).getImie());
+		for(DanePodstawowe dp: all){
+			System.out.println(dp.getId() + " "  + dp.getMiejscowosc().getNazwa_miejscowosci() + ", " + dp.getMieszkam().getStatusMieszkaniowy() +" bo jestem: " + dp.getPreferencje().getPlec().getPlec())
+			;
+		}
 		
-		
-		List<Preferencje> all = preferencjeService.getAll(); 
+/*		List<Preferencje> all = preferencjeService.getAll(); 
 		System.out.println(all);
 		for(Preferencje p: all){
 			System.out.println(p.getId());
-		}
+		}*/
 		
 		//Mieszkam mieszkam = mieszkamService.get(1L);
 logger.info("after retrived !");

@@ -18,6 +18,7 @@ import com.springinpractice.ch04.service.DanePodstawoweService;
 @Transactional
 public class DanePodstawoweServiceImpl implements DanePodstawoweService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DanePodstawoweServiceImpl.class); 
+	
 	@Inject private DanePodstawoweDao danePodstawoweDao;
 	
 	@Override

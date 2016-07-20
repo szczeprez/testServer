@@ -2,9 +2,11 @@ package com.springinpractice.ch04.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
@@ -20,7 +22,7 @@ public class DanePodstawowe implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	@Column(name = "imie")
@@ -34,7 +36,6 @@ public class DanePodstawowe implements Serializable{
 	@OneToOne
 	private Sylwetka sylwetka;
 	@OneToOne
-	@JoinColumn(name = "statusMieszkiowy")
 	private Mieszkam mieszkam;
 	@OneToOne
 	private DodatkowaInformacja dodatkowaInformacja; 
@@ -56,6 +57,15 @@ public class DanePodstawowe implements Serializable{
 		this.sylwetka = sylwetka;
 		this.mieszkam = mieszkam;
 		this.dodatkowaInformacja = dodatkowaInformacja;
+		this.preferencje = preferencje;
+	}
+
+	
+	public Preferencje getPreferencje() {
+		return preferencje;
+	}
+
+	public void setPreferencje(Preferencje preferencje) {
 		this.preferencje = preferencje;
 	}
 

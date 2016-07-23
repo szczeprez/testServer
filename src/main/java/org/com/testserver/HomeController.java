@@ -1,5 +1,5 @@
 package org.com.testserver;
- 
+
 import java.util.List;
 import java.util.Locale;
 
@@ -36,7 +36,6 @@ import com.springinpractice.ch04.service.MieszkamService;
 import com.springinpractice.ch04.service.PlecService;
 import com.springinpractice.ch04.service.PreferencjeService;
 
-
 /**
  * Handles requests for the application home page.
  */
@@ -44,20 +43,23 @@ import com.springinpractice.ch04.service.PreferencjeService;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-    @Autowired private DanePodstawoweService danePodstawoweService;  
-	@Autowired private MieszkamService mieszkamService; 
-	@Autowired private PreferencjeService preferencjeService; 
-	
+	@Autowired
+	private DanePodstawoweService danePodstawoweService;
+	@Autowired
+	private MieszkamService mieszkamService;
+	@Autowired
+	private PreferencjeService preferencjeService;
+
 	/**
-	 * http://websystique.com/spring-security/spring-security-4-custom-login-form-annotation-example/
+	 * http://websystique.com/spring-security/spring-security-4-custom-login-
+	 * form-annotation-example/
 	 * 
 	 * Simply selects the home view to render by returning its name.
 	 */
-	//Spring Security see this :
+	// Spring Security see this :
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(
-		@RequestParam(value = "error", required = false) String error,
-		@RequestParam(value = "logout", required = false) String logout) {
+	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout) {
 
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
@@ -71,8 +73,8 @@ public class HomeController {
 
 		return model;
 
-	}	
-	
+	}
+
 	@RequestMapping(value = "/")
 	public String welcome(ModelMap model){
 	
@@ -84,7 +86,13 @@ public class HomeController {
 		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
 		//System.out.println(all.get(0).getImie());
 		for(DanePodstawowe dp: all){
-			System.out.println(dp.getId() + " "  + dp.getMiejscowosc().getNazwa_miejscowosci() + ", " + dp.getMieszkam().getStatusMieszkaniowy() +" bo jestem: " + dp.getPreferencje().getPlec().getPlec()+ " " + dp.getDodatkowaInformacja().getDodatkowaInfo())
+			System.out.println(
+					dp.getId() + " "  + 
+					dp.getMiejscowosc().getNazwa_miejscowosci() + ", " + 
+					dp.getMieszkam().getStatusMieszkaniowy() +" bo jestem: " + 
+					dp.getPreferencje().getPlec().getPlec()+ " " + 
+					dp.getDodatkowaInformacja().getDodatkowaInfo() + " " + 
+					dp.getWojewodztwo().getNazwa() + " ")
 			;
 		}
 		
@@ -100,7 +108,7 @@ logger.info("after retrived !");
 	     
 		return "home"; 
 	}
-	
+
 	@RequestMapping(value = { "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 
@@ -111,6 +119,7 @@ logger.info("after retrived !");
 		return model;
 
 	}
+
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 
@@ -121,24 +130,26 @@ logger.info("after retrived !");
 
 		return model;
 	}
-	
-/*    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "admin";
-    }*/
-	
-	@RequestMapping(value = "menu" , method=RequestMethod.GET)
-	public String menu(Model model){
-		return "headAndFooterAndMenu/menu"; 
+
+	/*
+	 * @RequestMapping(value = "/admin", method = RequestMethod.GET) public
+	 * String adminPage(ModelMap model) { model.addAttribute("user",
+	 * getPrincipal()); return "admin"; }
+	 */
+
+	@RequestMapping(value = "menu", method = RequestMethod.GET)
+	public String menu(Model model) {
+		return "headAndFooterAndMenu/menu";
 	}
-	@RequestMapping(value = "footer" , method=RequestMethod.GET)
-	public String footer(Model model){
-		return "headAndFooterAndMenu/footer"; 
+
+	@RequestMapping(value = "footer", method = RequestMethod.GET)
+	public String footer(Model model) {
+		return "headAndFooterAndMenu/footer";
 	}
-	@RequestMapping(value = "content" , method=RequestMethod.GET)
-	public String content(Model model){
-		return "contentDir/content"; 
+
+	@RequestMapping(value = "content", method = RequestMethod.GET)
+	public String content(Model model) {
+		return "contentDir/content";
 	}
 
 	@RequestMapping(value = "/portfolio", method = RequestMethod.GET)
@@ -164,49 +175,49 @@ logger.info("after retrived !");
 		logger.info("Method kontakt() {}", locale);
 		return "pages/kontakt";
 	}
-	     
-    @RequestMapping(value = "/db", method = RequestMethod.GET)
-    public String dbaPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "dba";
-    }
- 
-	//for 403 access denied page
+
+	@RequestMapping(value = "/db", method = RequestMethod.GET)
+	public String dbaPage(ModelMap model) {
+		model.addAttribute("user", getPrincipal());
+		return "dba";
+	}
+
+	// for 403 access denied page
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied() {
 
-	  ModelAndView model = new ModelAndView();
-		
-	  //check if user is login
-	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	  if (!(auth instanceof AnonymousAuthenticationToken)) {
-		UserDetails userDetail = (UserDetails) auth.getPrincipal();	
-		model.addObject("username", userDetail.getUsername());
-	  }
-		
-	  model.setViewName("403");
-	  return model;
+		ModelAndView model = new ModelAndView();
+
+		// check if user is login
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			model.addObject("username", userDetail.getUsername());
+		}
+
+		model.setViewName("403");
+		return model;
 
 	}
- 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){    
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/";
-    }
-    
-    private String getPrincipal(){
-        String userName = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
- 
-        if (principal instanceof UserDetails) {
-            userName = ((UserDetails)principal).getUsername();
-        } else {
-            userName = principal.toString();
-        }
-        return userName;
-    }
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "redirect:/";
+	}
+
+	private String getPrincipal() {
+		String userName = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			userName = ((UserDetails) principal).getUsername();
+		} else {
+			userName = principal.toString();
+		}
+		return userName;
+	}
 }

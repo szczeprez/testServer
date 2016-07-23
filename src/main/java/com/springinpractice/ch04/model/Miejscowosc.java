@@ -20,9 +20,7 @@ public class Miejscowosc implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "woj_id")
 	private Wojewodztwo wojewodztwo;
-	
-	@OneToOne(mappedBy = "miejscowosc")
-	DanePodstawowe danePodstawowe; 
+ 
 
 	public long getId() {
 		return id;
@@ -49,23 +47,9 @@ public class Miejscowosc implements Serializable{
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Miejscowosc [id=");
-		builder.append(id);
-		builder.append(", nazwa_miejscowosci=");
-		builder.append(nazwa_miejscowosci);
-		builder.append(", wojewodztwo=");
-		builder.append(wojewodztwo);
-		builder.append("]");
-		return builder.toString();
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((danePodstawowe == null) ? 0 : danePodstawowe.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nazwa_miejscowosci == null) ? 0 : nazwa_miejscowosci.hashCode());
 		result = prime * result + ((wojewodztwo == null) ? 0 : wojewodztwo.hashCode());
@@ -81,11 +65,6 @@ public class Miejscowosc implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Miejscowosc other = (Miejscowosc) obj;
-		if (danePodstawowe == null) {
-			if (other.danePodstawowe != null)
-				return false;
-		} else if (!danePodstawowe.equals(other.danePodstawowe))
-			return false;
 		if (id != other.id)
 			return false;
 		if (nazwa_miejscowosci == null) {
@@ -99,7 +78,24 @@ public class Miejscowosc implements Serializable{
 		} else if (!wojewodztwo.equals(other.wojewodztwo))
 			return false;
 		return true;
-	} 
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Miejscowosc [id=");
+		builder.append(id);
+		builder.append(", nazwa_miejscowosci=");
+		builder.append(nazwa_miejscowosci);
+		builder.append(", wojewodztwo=");
+		builder.append(wojewodztwo);
+		builder.append("]");
+		return builder.toString();
+	}
+
+ 
+
+  
 	
 	
 }

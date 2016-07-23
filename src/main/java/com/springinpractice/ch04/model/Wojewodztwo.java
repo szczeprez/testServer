@@ -20,9 +20,6 @@ public class Wojewodztwo implements Serializable{
 	@OneToMany(mappedBy = "wojewodztwo")
 	private List<Miejscowosc> miejscowosci;
 	
-	@OneToOne(mappedBy = "wojewodztwo")
-	DanePodstawowe danePodstawowe; 
-
 	public long getId() {
 		return id;
 	}
@@ -47,33 +44,10 @@ public class Wojewodztwo implements Serializable{
 		this.miejscowosci = miejscowosci;
 	}
 
-	
-	public DanePodstawowe getDanePodstawowe() {
-		return danePodstawowe;
-	}
-
-	public void setDanePodstawowe(DanePodstawowe danePodstawowe) {
-		this.danePodstawowe = danePodstawowe;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Wojewodztwo [id=");
-		builder.append(id);
-		builder.append(", nazwa=");
-		builder.append(nazwa);
-		builder.append(", miejscowosci=");
-		builder.append(miejscowosci);
-		builder.append("]");
-		return builder.toString();
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((danePodstawowe == null) ? 0 : danePodstawowe.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((miejscowosci == null) ? 0 : miejscowosci.hashCode());
 		result = prime * result + ((nazwa == null) ? 0 : nazwa.hashCode());
@@ -89,11 +63,6 @@ public class Wojewodztwo implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Wojewodztwo other = (Wojewodztwo) obj;
-		if (danePodstawowe == null) {
-			if (other.danePodstawowe != null)
-				return false;
-		} else if (!danePodstawowe.equals(other.danePodstawowe))
-			return false;
 		if (id != other.id)
 			return false;
 		if (miejscowosci == null) {
@@ -107,6 +76,7 @@ public class Wojewodztwo implements Serializable{
 		} else if (!nazwa.equals(other.nazwa))
 			return false;
 		return true;
-	} 
+	}
+ 
 	
 }

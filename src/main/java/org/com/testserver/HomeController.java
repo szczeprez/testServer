@@ -84,7 +84,7 @@ public class HomeController {
 		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
 		//System.out.println(all.get(0).getImie());
 		for(DanePodstawowe dp: all){
-			System.out.println(dp.getId() + " "  + dp.getMiejscowosc().getNazwa_miejscowosci() + ", " + dp.getMieszkam().getStatusMieszkaniowy() +" bo jestem: " + dp.getPreferencje().getPlec().getPlec())
+			System.out.println(dp.getId() + " "  + dp.getMiejscowosc().getNazwa_miejscowosci() + ", " + dp.getMieszkam().getStatusMieszkaniowy() +" bo jestem: " + dp.getPreferencje().getPlec().getPlec()+ " " + dp.getDodatkowaInformacja().getDodatkowaInfo())
 			;
 		}
 		

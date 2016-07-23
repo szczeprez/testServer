@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -21,12 +22,9 @@ public class Mieszkam implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GenericGenerator(name = "myGenerator", strategy = "foreign", parameters = @Parameter(value = "danePodstawowe", name = "property"))
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	String statusMieszkaniowy;
-
-	@OneToOne(mappedBy = "mieszkam", cascade = CascadeType.ALL)
-	DanePodstawowe danePodstawowe;
 
 	public long getId() {
 		return id;
@@ -36,33 +34,12 @@ public class Mieszkam implements Serializable {
 		this.id = id;
 	}
 
-	public DanePodstawowe getDanePodstawowe() {
-		return danePodstawowe;
-	}
-
-	public void setDanePodstawowe(DanePodstawowe danePodstawowe) {
-		this.danePodstawowe = danePodstawowe;
-	}
-
 	public String getStatusMieszkaniowy() {
 		return statusMieszkaniowy;
 	}
 
 	public void setStatusMieszkaniowy(String statusMieszkaniowy) {
 		this.statusMieszkaniowy = statusMieszkaniowy;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Mieszkam [id=");
-		builder.append(id);
-		builder.append(", statusMieszkaniowy=");
-		builder.append(statusMieszkaniowy);
-		builder.append(", danePodstawowe=");
-		// builder.append(danePodstawowe);
-		builder.append("]");
-		return builder.toString();
 	}
 
 	@Override
@@ -91,6 +68,17 @@ public class Mieszkam implements Serializable {
 		} else if (!statusMieszkaniowy.equals(other.statusMieszkaniowy))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Mieszkam [id=");
+		builder.append(id);
+		builder.append(", statusMieszkaniowy=");
+		builder.append(statusMieszkaniowy);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

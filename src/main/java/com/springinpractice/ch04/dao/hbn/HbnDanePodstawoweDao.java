@@ -54,4 +54,22 @@ public class HbnDanePodstawoweDao extends AbstractHbnDao<DanePodstawowe> impleme
 		DanePodstawowe dp = (DanePodstawowe) createQuery.uniqueResult();
 		return dp;
 	}
+
+	@Override
+	public boolean addDanePodstawowe(DanePodstawowe danePodstawowe) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void updateDanePodstawowe(DanePodstawowe danePodstawowe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteDanePodstawowe(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 }

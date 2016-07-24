@@ -11,6 +11,14 @@ public interface DanePodstawoweService {
 	public void create(DanePodstawowe t); 
 	
 	
-	public List<DanePodstawowe> getAll() ; 
+	public List<DanePodstawowe> getAll() ;
+
+	DanePodstawowe getDanePodstawoweById(Long id);
+
+	boolean addDanePodstawowe(DanePodstawowe danePodstawowe);
+
+	void updateDanePodstawowe(DanePodstawowe danePodstawowe);
+
+	void deleteDanePodstawowe(Long id); 
 	
 }

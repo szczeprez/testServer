@@ -1,10 +1,12 @@
 package com.springinpractice.ch04.dao.hbn;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.springinpractice.ch04.dao.DanePodstawoweDao;
@@ -45,4 +47,11 @@ public class HbnDanePodstawoweDao extends AbstractHbnDao<DanePodstawowe> impleme
 		return listDP;
 	}
 
+	@Override
+	public DanePodstawowe get(Serializable id) {
+		getSession().beginTransaction(); 
+		Query createQuery = getSession().createQuery("From DanePodstawowe where id = :id");
+		DanePodstawowe dp = (DanePodstawowe) createQuery.uniqueResult();
+		return dp;
+	}
 }

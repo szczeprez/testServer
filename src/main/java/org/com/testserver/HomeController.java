@@ -22,18 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.springinpractice.ch04.model.DanePodstawowe;
-import com.springinpractice.ch04.model.DodatkowaInformacja;
-import com.springinpractice.ch04.model.Miejscowosc;
-import com.springinpractice.ch04.model.Mieszkam;
-import com.springinpractice.ch04.model.Plec;
-import com.springinpractice.ch04.model.Preferencje;
-import com.springinpractice.ch04.model.StatusZwiazku;
-import com.springinpractice.ch04.model.Sylwetka;
-import com.springinpractice.ch04.model.Wojewodztwo;
+import com.springinpractice.ch04.model.DanePodstawowe; 
 import com.springinpractice.ch04.service.DanePodstawoweService;
 import com.springinpractice.ch04.service.MieszkamService;
-import com.springinpractice.ch04.service.PlecService;
 import com.springinpractice.ch04.service.PreferencjeService;
 
 /**
@@ -76,37 +67,17 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/")
-	public String welcome(ModelMap model){
-	
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName(); //get logged in username
+	public String welcome(ModelMap model) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName(); // get logged in username
 		logger.info("Logged person = " + name);
- 
-		// DanePodstawowe daneP = danePodstawoweService.findByName("Kazimierz"); 		
-		List<DanePodstawowe> all = danePodstawoweService.getAll(); 
-		//System.out.println(all.get(0).getImie());
-		for(DanePodstawowe dp: all){
-			System.out.println(
-					dp.getId() + " "  + 
-					dp.getMiejscowosc().getNazwa_miejscowosci() + ", " + 
-					dp.getMieszkam().getStatusMieszkaniowy() +" bo jestem: " + 
-					dp.getPreferencje().getPlec().getPlec()+ " " + 
-					dp.getDodatkowaInformacja().getDodatkowaInfo() + " " + 
-					dp.getWojewodztwo().getNazwa() + " ")
-			;
-		}
-		
-/*		List<Preferencje> all = preferencjeService.getAll(); 
-		System.out.println(all);
-		for(Preferencje p: all){
-			System.out.println(p.getId());
-		}*/
-		
-		//Mieszkam mieszkam = mieszkamService.get(1L);
-logger.info("after retrived !");
- 
-	     
-		return "home"; 
+
+
+
+		logger.info("after retrived !");
+
+		return "home";
 	}
 
 	@RequestMapping(value = { "/welcome**" }, method = RequestMethod.GET)

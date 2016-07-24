@@ -50,6 +50,30 @@ public class DanePodstawoweServiceImpl implements DanePodstawoweService {
 		
 		return all;
 	}
+
+	@Override
+	public DanePodstawowe getDanePodstawoweById(Long id) {
+		danePodstawoweDao.get(id); 
+		return danePodstawoweDao.get(id);
+	}
+
+	@Override
+	public boolean addDanePodstawowe(DanePodstawowe danePodstawowe) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void updateDanePodstawowe(DanePodstawowe danePodstawowe) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteDanePodstawowe(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

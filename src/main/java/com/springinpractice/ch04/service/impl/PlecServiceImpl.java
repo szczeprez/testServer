@@ -1,5 +1,7 @@
 package com.springinpractice.ch04.service.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -25,11 +27,14 @@ public class PlecServiceImpl implements PlecService {
 		plecDao.create(p);
 	}
 
-
 	@Override
 	public Plec getPlec() {
-		
 		return plecDao.getPlec();
+	}
+
+	@Override
+	public List<Plec> getAllPlec() {
+		return plecDao.getAllPlec();
 	}
 
 }

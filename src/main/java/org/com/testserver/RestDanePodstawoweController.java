@@ -34,14 +34,23 @@ public class RestDanePodstawoweController {
 	private PlecService plecService; 
 	
 	@RequestMapping(value = "/danepod", method = RequestMethod.GET)
-	//public ResponseEntity<List<DanePodstawowe>> getAllDanePodstawowe() {
-	public ResponseEntity<Plec> getAllDanePodstawowe() {
+	public ResponseEntity<List<Plec>> getAllPlec() {
 		logger.info(">> IN method getAllDanePodstawowe {} ");
 		logger.debug(">> Debug Info {}" );
 		
-		Plec plec = plecService.getPlec(); 
+		 List<Plec> allPlec = plecService.getAllPlec();
+ 
+		logger.debug("OUT method testQueries {}" + allPlec);
+		return new ResponseEntity<List<Plec>>(allPlec, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/danepod-zz", method = RequestMethod.GET)
+	public ResponseEntity<List<DanePodstawowe>> getAllDanePodstawowe() {
+		logger.info(">> IN method getAllDanePodstawowe {} ");
+		logger.debug(">> Debug Info {}" );
 		
-/*		List<DanePodstawowe> listDp = danePodstawoweService.getAll();
+		List<DanePodstawowe> listDp = danePodstawoweService.getAll();
 
 		for (DanePodstawowe dp : listDp) {
 			System.out.println(dp.getId() + " " 
@@ -51,9 +60,9 @@ public class RestDanePodstawoweController {
 					+ dp.getDodatkowaInformacja().getDodatkowaInfo()
 					+ " " 
 					+ dp.getWojewodztwo().getNazwa() + " ");
-		}*/
-		logger.debug("OUT method testQueries {}" + plec);
-		return new ResponseEntity<Plec>(plec, HttpStatus.OK);
+		}
+		logger.debug("OUT method testQueries {}" + listDp);
+		return new ResponseEntity<List<DanePodstawowe>>(listDp, HttpStatus.OK);
 
 	}
 	

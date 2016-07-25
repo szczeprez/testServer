@@ -48,16 +48,7 @@ public class DodatkowaInformacja implements Serializable{
 		this.danePodstawowe = danePodstawowe;
 	}*/
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("DodatkowaInformacja [id=");
-		builder.append(id);
-		builder.append(", dodatkowaInfo=");
-		builder.append(dodatkowaInfo);
-		builder.append("]");
-		return builder.toString();
-	}
+ 
 
 	@Override
 	public int hashCode() {
@@ -66,6 +57,11 @@ public class DodatkowaInformacja implements Serializable{
 		result = prime * result + ((dodatkowaInfo == null) ? 0 : dodatkowaInfo.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "DodatkowaInformacja [id=" + id + ", dodatkowaInfo=" + dodatkowaInfo + "]";
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.springinpractice.ch04.dao.hbn;
 
+import org.hibernate.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,12 @@ public class HbnPlecDao extends AbstractHbnDao<Plec> implements PlecDao{
 		getSession().persist(p);
 		getSession().getTransaction().commit();
 		LOGGER.info("HbnPlecDao create {} [OUT]");
+	}
+	@Override
+	public Plec getPlec() {
+		getSession().beginTransaction();
+		Plec plec = (Plec) getSession().createQuery("from Plec where id = 1"); 
+		return plec;
 	}
 
 }

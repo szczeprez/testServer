@@ -25,4 +25,11 @@ public class PlecServiceImpl implements PlecService {
 		plecDao.create(p);
 	}
 
+
+	@Override
+	public Plec getPlec() {
+		
+		return plecDao.getPlec();
+	}
+
 }

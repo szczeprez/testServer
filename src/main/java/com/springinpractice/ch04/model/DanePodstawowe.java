@@ -134,27 +134,13 @@ public class DanePodstawowe implements Serializable{
 		this.dodatkowaInformacja = dodatkowaInformacja;
 	}
 
+
+
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("DanePodstawowe [id=");
-		builder.append(id);
-		builder.append(", imie=");
-		builder.append(imie);
-		builder.append(", wojewodztwo=");
-		builder.append(wojewodztwo);
-		builder.append(", miejscowosc=");
-		builder.append(miejscowosc);
-		builder.append(", statusZwiazku=");
-		builder.append(statusZwiazku);
-		builder.append(", sylwetka=");
-		builder.append(sylwetka);
-		builder.append(", mieszkam=");
-		builder.append(mieszkam);
-		builder.append(", dodatkowaInformacja=");
-		builder.append(dodatkowaInformacja);
-		builder.append("]");
-		return builder.toString();
+		return "DanePodstawowe [id=" + id + ", imie=" + imie + ", wojewodztwo=" + wojewodztwo + ", miejscowosc="
+				+ miejscowosc + ", statusZwiazku=" + statusZwiazku + ", sylwetka=" + sylwetka + ", mieszkam=" + mieszkam
+				+ ", dodatkowaInformacja=" + dodatkowaInformacja + ", preferencje=" + preferencje + "]";
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package org.com.testserver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.springinpractice.ch04.model.DanePodstawowe;
+import com.springinpractice.ch04.model.Plec;
 import com.springinpractice.ch04.service.DanePodstawoweService;
+import com.springinpractice.ch04.service.PlecService;
 
 @Controller
 public class RestDanePodstawoweController {
@@ -27,11 +30,18 @@ public class RestDanePodstawoweController {
 	@Autowired
 	private DanePodstawoweService danePodstawoweService;
 	
+	@Autowired
+	private PlecService plecService; 
+	
 	@RequestMapping(value = "/danepod", method = RequestMethod.GET)
-	public ResponseEntity<List<DanePodstawowe>> getAllDanePodstawowe() {
+	//public ResponseEntity<List<DanePodstawowe>> getAllDanePodstawowe() {
+	public ResponseEntity<Plec> getAllDanePodstawowe() {
 		logger.info(">> IN method getAllDanePodstawowe {} ");
+		logger.debug(">> Debug Info {}" );
 		
-		List<DanePodstawowe> listDp = danePodstawoweService.getAll();
+		Plec plec = plecService.getPlec(); 
+		
+/*		List<DanePodstawowe> listDp = danePodstawoweService.getAll();
 
 		for (DanePodstawowe dp : listDp) {
 			System.out.println(dp.getId() + " " 
@@ -41,9 +51,9 @@ public class RestDanePodstawoweController {
 					+ dp.getDodatkowaInformacja().getDodatkowaInfo()
 					+ " " 
 					+ dp.getWojewodztwo().getNazwa() + " ");
-		}
-		logger.debug("OUT method testQueries {}" + listDp);
-		return new ResponseEntity<List<DanePodstawowe>>(listDp, HttpStatus.OK);
+		}*/
+		logger.debug("OUT method testQueries {}" + plec);
+		return new ResponseEntity<Plec>(plec, HttpStatus.OK);
 
 	}
 	

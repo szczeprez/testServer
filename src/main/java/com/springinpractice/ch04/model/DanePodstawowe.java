@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne; 
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore; 
 
 
 @Entity
@@ -26,17 +28,22 @@ public class DanePodstawowe implements Serializable{
 
 	@Column(name = "imie")
 	private String imie;
+	
 	@OneToOne
 	private Wojewodztwo wojewodztwo;
+ 
 	@OneToOne
 	private Miejscowosc miejscowosc;
+	
 	@OneToOne
 	private StatusZwiazku statusZwiazku;
+	
 	@OneToOne
 	private Sylwetka sylwetka;
 	
 	@OneToOne
 	private Mieszkam mieszkam;
+	
 	@OneToOne
 	private DodatkowaInformacja dodatkowaInformacja; 
 	

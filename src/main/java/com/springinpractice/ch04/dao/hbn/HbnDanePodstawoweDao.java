@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -41,7 +40,7 @@ public class HbnDanePodstawoweDao extends AbstractHbnDao<DanePodstawowe> impleme
 	@Override
 	public List<DanePodstawowe> getAll() {
 		getSession().beginTransaction();
-		List listDP = getSession().createQuery("from DanePodstawowe").list();
+		List<DanePodstawowe> listDP = getSession().createQuery("from DanePodstawowe").list();
 		if (listDP == null)
 			System.err.println("getAll DanePodstawowe is NULL !");
 		return listDP;

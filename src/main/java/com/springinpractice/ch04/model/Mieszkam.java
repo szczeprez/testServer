@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery; 
 
@@ -36,6 +35,11 @@ public class Mieszkam implements Serializable {
 
 	public void setStatusMieszkaniowy(String statusMieszkaniowy) {
 		this.statusMieszkaniowy = statusMieszkaniowy;
+	}
+
+	@Override
+	public String toString() {
+		return "Mieszkam [id=" + id + ", statusMieszkaniowy=" + statusMieszkaniowy + "]";
 	}
 
 	@Override

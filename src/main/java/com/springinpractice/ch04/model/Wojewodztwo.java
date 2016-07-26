@@ -1,24 +1,36 @@
 package com.springinpractice.ch04.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Wojewodztwo implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private long id; 
 	private String nazwa; 
 	
-	@OneToMany(mappedBy = "wojewodztwo")
-	private List<Miejscowosc> miejscowosci;
+	@JsonIgnore
+	@OneToMany(mappedBy = "wojewodztwo", fetch = FetchType.LAZY)
+	private List<Miejscowosc> miejscowosci = new ArrayList<Miejscowosc>(0);
+	
+/*	@Transient
+	private Miejscowosc miejscowosc;*/ 
 	
 	public long getId() {
 		return id;
@@ -43,6 +55,8 @@ public class Wojewodztwo implements Serializable{
 	public void setMiejscowosci(List<Miejscowosc> miejscowosci) {
 		this.miejscowosci = miejscowosci;
 	}
+
+ 
 
 	@Override
 	public int hashCode() {
